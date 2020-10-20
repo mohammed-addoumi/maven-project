@@ -12,7 +12,7 @@ public class Formation {
 	User user = context.getBean("user",User.class);
 	System.out.println(user.getName());
 	System.out.println(user.getId());
-	
+	System.out.println("maven project changed");
 	}
 
 }
