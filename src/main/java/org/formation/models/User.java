@@ -1,8 +1,13 @@
 package org.formation.models;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class User {
 	
 	private String name;
+	@Id
 	private int id;
 	
 	public User() {

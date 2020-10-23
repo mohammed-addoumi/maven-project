@@ -1,18 +1,26 @@
 package org.formation.controller;
 
 import org.formation.models.User;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+
 
 public class Formation {
 	
 	public static void main(String[] args) {
-	System.out.println("firt project maven");
-	ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
-	User user = context.getBean("user",User.class);
-	System.out.println(user.getName());
-	System.out.println(user.getId());
-	System.out.println("maven project changed");
+		
+	User user = new User("simo",10);
+    
+	Configuration cnf = new Configuration().configure().addAnnotatedClass(User.class);
+	SessionFactory factory = cnf.buildSessionFactory();
+	Session session = factory.openSession();
+	
+	Transaction tx = session.beginTransaction();
+	session.save(user);
+	tx.commit();
 	}
 
 }
